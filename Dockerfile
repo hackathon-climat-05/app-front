@@ -7,6 +7,12 @@ WORKDIR /app
 # where available (npm@5+)
 COPY package*.json .
 
+# The access token for the GitHub Package registry
+ARG NODE_AUTH_TOKEN
+
+# Setup registry credentials
+RUN if [ ! -z "$NODE_AUTH_TOKEN" ]; then echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > .npmrc; fi
+
 # Install app dependencies
 RUN npm ci --omit=dev
 
@@ -25,7 +31,7 @@ WORKDIR /usr/src/app
 COPY --from=build /app/build .
 
 # Install server
-RUN npm install --no-save serve
+RUN npm install -g serve
 
 EXPOSE 8080
 
