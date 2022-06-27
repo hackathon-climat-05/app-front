@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hackathon-climat-05/common-lib": ">=0.0.0",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
