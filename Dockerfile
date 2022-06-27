@@ -5,7 +5,15 @@ WORKDIR /app
 # RUN yarn install --frozen-lockfile
 
 # If using npm with a `package-lock.json` comment out above and use below instead
-COPY package.json package-lock.json ./ 
+COPY package.json package-lock.json ./
+
+# The access token for the GitHub Package registry
+ARG NODE_AUTH_TOKEN
+
+# Setup registry credentials
+RUN if [ ! -z "$NODE_AUTH_TOKEN" ]; then echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > .npmrc; fi
+
+# Install app dependencies
 RUN npm ci
 
 # Rebuild the source code only when needed
