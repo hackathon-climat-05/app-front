@@ -1,15 +1,22 @@
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { env } from 'process'
 import { useEffect } from 'react'
 
 const Login: NextPage = () => {
+   const router = useRouter();
+
    const handleCredentialResponse = async (response: any) => {
-      console.log(response);
-      const request = await fetch('/api/login', {
+      const result = await fetch('/api/login', {
          method: "POST",
          body: JSON.stringify(response.credential)
-      });
+      })
+      const data = await result.json();
+
+      if (data?.Location) {
+         router.push(data.Location)
+      }
    }
 
    useEffect( () => {
