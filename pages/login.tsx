@@ -1,46 +1,47 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Script from 'next/script'
-import { env } from 'process'
-import { useEffect } from 'react'
+import { useState } from 'react'
+import styles from '../styles/Login.module.css'
 
 const Login: NextPage = () => {
-   const router = useRouter();
+  const router = useRouter()
+  const [isLoading, setLoading] = useState(false)
 
-   const handleCredentialResponse = async (response: any) => {
-      const result = await fetch('/api/login', {
-         method: "POST",
-         body: JSON.stringify(response.credential)
+  const onGoogleLogin = () => {
+    setLoading(true)
+
+    fetch("/api/auth/login/google")
+      .then(async res => {
+        const data = await res.json()
+
+        if (res.status >= 400)
+          throw data
+
+        router.push(data.url)
       })
-      const data = await result.json();
+      .catch(error => {
+        console.error(error)
+        setLoading(false)
+      })
+  }
 
-      if (data?.Location) {
-         router.push(data.Location)
-      }
-   }
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Login &ndash; Greenmile</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-   useEffect( () => {
-      (window as any).handleCredentialResponse = handleCredentialResponse;
-   });
-   return (
-      <>
-         <Script src="https://accounts.google.com/gsi/client" />
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          Please login
+        </h1>
 
-         <div id="g_id_onload"
-            data-client_id={process.env.GOOGLE_DATA_CLIENT_ID}
-            data-callback="handleCredentialResponse"
-            data-auto_prompt="false">
-         </div>
-         <div className="g_id_signin"
-            data-type="standard"
-            data-size="large"
-            data-theme="outline"
-            data-text="sign_in_with"
-            data-shape="rectangular"
-            data-logo_alignment="left">
-         </div>
-      </>
-   );
+        <button onClick={onGoogleLogin} disabled={isLoading}>Login with Google</button>
+      </main>
+    </div>
+  )
 }
 
 export default Login
