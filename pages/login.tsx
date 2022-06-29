@@ -14,7 +14,6 @@ const Login: NextPage = () => {
     fetch("/api/auth/login/google")
       .then(async res => {
         const data = await res.json()
-
         if (res.status >= 400)
           throw data
 

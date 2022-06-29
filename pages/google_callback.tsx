@@ -26,7 +26,6 @@ const GoogleCallback: NextPage = () => {
     })
       .then(async res => {
         const data = await res.json()
-
         if (res.status >= 400)
           throw data
 
@@ -34,6 +33,7 @@ const GoogleCallback: NextPage = () => {
       })
       .catch(error => {
         console.error(error)
+        router.push('/login')
       })
   }, [router.isReady])
 

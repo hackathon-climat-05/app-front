@@ -1,3 +1,4 @@
+import { serialize } from 'cookie'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -8,11 +9,14 @@ export default async function handler(
         try {
             const response = await fetch('http://auth/google/url')
             const data = await response.json()
+            if (response.status >= 400)
+                throw data
 
             res.status(200).json(data)
-        } catch (error: any) {
+        } catch (error) {
+            console.error(error)
             res.status(500).json({
-                error: `failed to generate authentication URL: ${error}`
+                error: 'failed to generate authentication URL'
             })
         }
     } else if (req.method === "POST") {
@@ -24,12 +28,17 @@ export default async function handler(
                 },
                 body: JSON.stringify(req.body)
             })
-            const data = await response.json()
+            const { token, ...data } = await response.json()
+            if (response.status >= 400)
+                throw data
+
+            res.setHeader('Set-Cookie', serialize('auth_token', token, { path: '/' }))
 
             res.status(200).json(data)
-        } catch (error: any) {
+        } catch (error) {
+            console.error(error)
             res.status(500).json({
-                error: `failed to generate authentication URL: ${error}`
+                error: 'failed to login'
             })
         }
     } else {

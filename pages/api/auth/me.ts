@@ -12,7 +12,7 @@ export default async function handler(
     }
 
     try {
-        const response = await fetch('http://auth/validate', {
+        const response = await fetch('http://auth/jwt/validate', {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -23,9 +23,13 @@ export default async function handler(
         })
 
         const data = await response.json()
+        if (response.status === 401) {
+            res.status(401).json({})
+            return
+        }
 
-        if (data.refreshed_token)
-            res.setHeader('Set-Cookie', serialize('auth_token', data.refreshed_token, { path: '/' }));
+        if (response.status >= 400)
+            throw data
 
         res.status(200).json(data)
     } catch (error) {
