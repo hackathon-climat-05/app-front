@@ -55,8 +55,4 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-EXPOSE 8080
-
-ENV PORT 8080
-
 CMD ["node", "server.js"]
