@@ -11,6 +11,10 @@ const Login: NextPage = () => {
   const [isLoading, setLoading] = useState(false)
 
   const onGoogleLogin = () => {
+    if (isLoading) {
+      return;
+    }
+
     setLoading(true)
 
     fetch("/api/auth/login/google")
@@ -34,8 +38,6 @@ const Login: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-
       <main className={styles.main}>
         <h1 className={styles.title}>
           Bienvenue sur...
@@ -43,7 +45,7 @@ const Login: NextPage = () => {
         <div className={styles.logo}>
           <Image src="/logo_greenmile.png" alt="Vercel Logo" width={157} height={28} />
         </div>
-        <button className={styles.login} onClick={onGoogleLogin} disabled={isLoading}><Image   src="/google_login.png" alt="Vercel Logo" width={350} height={54} /></button>
+        <a className={styles.login} onClick={onGoogleLogin} style={{'opacity': isLoading ? '0.5' : '1'}}><Image src="/logo_google.svg" alt="Google Logo" width={23} height={23} />Continue with Google</a>
       </main>
     </div>
   )
