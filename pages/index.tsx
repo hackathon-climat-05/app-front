@@ -7,14 +7,22 @@ import { Table } from '../components/Table'
 import AuthProvider from '../components/AuthProvider'
 import { useEffect, useState } from 'react'
 import Loading from '../components/Loading'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
+    const router = useRouter()
     const [isLoading, setLoading] = useState(false)
     const [userData, setUserData] = useState<any>(null)
+
     useEffect(() => {
         setLoading(true)
         fetch("/api/data")
         .then(async res => {
+            if (res.status === 401) {
+              router.push("/login")
+              return
+            }
+
             const data = await res.json()
             if (res.status >= 400)
             throw data
@@ -25,7 +33,6 @@ const Home: NextPage = () => {
             console.error(error)
             setLoading(false)
         })
-
     }, [])
 
     if (!userData) {
