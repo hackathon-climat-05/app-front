@@ -20,11 +20,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border : 1px solid;
+  border-radius: 10px;
+  height: 106px;
 }
 .userScoreDetail {
   text-align: center;
   width: calc(40% - 10px);
+  height: 106px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.userScoreDetail h2 {
+  margin: 10px;
+  font-size: 24px;
+}
+.userScoreDetail p {
+  margin: 0px;
+  font-size: 10px;
 }
 .footer {
   display: flex;

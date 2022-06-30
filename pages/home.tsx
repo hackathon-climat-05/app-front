@@ -40,7 +40,7 @@ const Home: NextPage = () => {
         </h1>
         <div className={styles.mainScores}>
             <div className={styles.userScore} style={{backgroundImage: `url("/greenbg.png")`}}>
-                <h1>{userData.scores.global}</h1>
+                <h1>{userData.scores.global}/100</h1>
             </div>
             <div className={styles.userScoreDetail}>
                 <h2>{userData.scores.kg} kg</h2>
