@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Header from '../components/Header'
 import styles from '../styles/Login.module.css'
+import Image from 'next/image'
 
 const Login: NextPage = () => {
   const router = useRouter()
@@ -37,10 +38,12 @@ const Login: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Please login
+          Bienvenue sur...
         </h1>
-
-        <button onClick={onGoogleLogin} disabled={isLoading}>Login with Google</button>
+        <div className={styles.logo}>
+          <Image src="/logo_greenmile.png" alt="Vercel Logo" width={157} height={28} />
+        </div>
+        <button className={styles.login} onClick={onGoogleLogin} disabled={isLoading}><Image   src="/google_login.png" alt="Vercel Logo" width={350} height={54} /></button>
       </main>
     </div>
   )
