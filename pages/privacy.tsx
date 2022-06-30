@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Privacy.module.css'
 
@@ -7,7 +6,7 @@ const Privacy: NextPage = () => {
   return (
     <div className={styles.container}>
         <div className={styles.logo}>
-          <Image src="/logo_greenmile.png" alt="Vercel Logo" width={214} height={38} />
+          <Image src='/logo_greenmile.png' alt='Vercel Logo' width={214} height={38} />
         </div>
         <div className={styles.text}>
             <h3 className={styles.contentTitle}>Please review the user policy below :</h3>
@@ -22,13 +21,12 @@ const Privacy: NextPage = () => {
             Definitions
             For the purposes of this Privacy Policy:
             Account means a unique account created for You to access our Service or parts of our Service.
-            Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to greenmile.
+            Company (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to greenmile.
             Cookies are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.
             Country refers to: France
 
             </p>
         </div>
-        
     </div>
   )
 }

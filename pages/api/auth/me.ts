@@ -15,10 +15,10 @@ export default async function handler(
 
     try {
         const response = await fetch('http://auth/jwt/validate', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            method: 'POST',
             body: JSON.stringify({
                 token
             })
