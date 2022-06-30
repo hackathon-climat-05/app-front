@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { serialize } from 'cookie'
 
 export default async function handler(
     req: NextApiRequest,
@@ -15,11 +14,9 @@ export default async function handler(
 
     try {
         const response = await fetch('http://calculator/data', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
             method: 'GET',
             headers: {
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
         })
