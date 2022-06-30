@@ -1,5 +1,3 @@
-.container {
-}
 .detailedScore h2 {
   margin: 20px 0px 0px 0px;
 }
@@ -25,6 +23,9 @@
   align-items: center;
   border-radius: 10px;
   height: 106px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .userScoreDetail {
   text-align: center;
@@ -153,4 +154,10 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.table {
+  background-color: #EEF3ED;
+  border-radius: 5px;
+  padding: 20px;
 }

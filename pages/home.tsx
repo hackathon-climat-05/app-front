@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
+import { Table } from '../components/Table'
 
 const userData = {
     name: "Léo",
@@ -25,6 +26,7 @@ const userData = {
         ]
     }
 }
+
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -47,6 +49,10 @@ const Home: NextPage = () => {
                 <p>CO2 par journée</p>
             </div>
         </div>
+        <h2>Cette semaine</h2>
+        <div className={styles.table}>
+          <Table/>
+        </div>
         <div className={styles.detailedScore}>
             <h2>Consommation détaillée</h2>
             <div>
@@ -64,8 +70,7 @@ const Home: NextPage = () => {
                 </div>
             </div>
         </div>
-      </main>
-        
+      </main>        
     </div>
   )
 }
