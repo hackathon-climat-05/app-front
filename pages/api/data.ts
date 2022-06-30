@@ -14,21 +14,19 @@ export default async function handler(
     }
 
     try {
-        const response = await fetch('http://auth/jwt/validate', {
+        const response = await fetch('http://calculator/data', {
             headers: {
                 'Content-Type': 'application/json'
             },
-            method: 'POST',
-            body: JSON.stringify({
-                token
-            })
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         })
 
         const data = await response.json()
         if (response.status === 401) {
-            res.status(401).json({
-                error: 'unauthorized'
-            })
+            res.status(401).json({})
             return
         }
 
