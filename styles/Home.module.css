@@ -15,6 +15,13 @@
 .mainScores {
   display: flex;
   justify-content: space-between;
+  gap: 5px;
+}
+.userName {
+  background: linear-gradient(256.84deg, #6DE579 6.82%, #E99548 54.41%);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .userScore {
   width: 60%;
@@ -33,7 +40,11 @@
   height: 106px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   justify-content: center;
+  background: #EEF3ED;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 .userScoreDetail h2 {
   margin: 10px;
