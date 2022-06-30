@@ -5,7 +5,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    if (req.method === "GET") {
+    if (req.method === 'GET') {
         try {
             const response = await fetch('http://auth/google/url')
             const data = await response.json()
@@ -19,7 +19,7 @@ export default async function handler(
                 error: 'failed to generate authentication URL'
             })
         }
-    } else if (req.method === "POST") {
+    } else if (req.method === 'POST') {
         try {
             const response = await fetch('http://auth/google/login', {
                 method: 'POST',
