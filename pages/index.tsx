@@ -56,7 +56,7 @@ const Home: NextPage = () => {
             </div>
             <h2>Cette semaine</h2>
             <div className={styles.table}>
-            <Table/>
+            <Table history={userData.history}/>
             </div>
             <div className={styles.detailedScore}>
                 <h2>Consommation détaillée</h2>
