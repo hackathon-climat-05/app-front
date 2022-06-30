@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import Header from '../components/Header'
 import styles from '../styles/Login.module.css'
 
 const Login: NextPage = () => {
@@ -31,6 +32,8 @@ const Login: NextPage = () => {
         <title>Login &ndash; Greenmile</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Header />
 
       <main className={styles.main}>
         <h1 className={styles.title}>
