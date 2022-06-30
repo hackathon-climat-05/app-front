@@ -39,7 +39,7 @@ const Home: NextPage = () => {
             Bonjour, {userData.name} !
         </h1>
         <div className={styles.mainScores}>
-            <div className={styles.userScore}>
+            <div className={styles.userScore} style={{backgroundImage: `url("/greenbg.png")`}}>
                 <h1>{userData.scores.global}</h1>
             </div>
             <div className={styles.userScoreDetail}>
