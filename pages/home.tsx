@@ -11,15 +11,15 @@ const userData = {
         kg: 55.10,
         details: [
           {
-              name: "messagerie",
+              name: "Messagerie",
               score: 10
           },
           {
-            name: "drive",
+            name: "Drive",
             score: 10
             },
             {
-                name: "transports",
+                name: "Transports",
                 score: 12
             }
         ]
@@ -45,6 +45,23 @@ const Home: NextPage = () => {
             <div className={styles.userScoreDetail}>
                 <h2>{userData.scores.kg} kg</h2>
                 <p>CO2 par journée</p>
+            </div>
+        </div>
+        <div className={styles.detailedScore}>
+            <h2>Consommation détaillée</h2>
+            <div>
+                <div className={styles.category}>
+                    <h3>{userData.scores.details[0].name}</h3>
+                    <p>{userData.scores.details[0].score}kg / semaine</p>
+                </div>
+                <div className={styles.category}>
+                    <h3>{userData.scores.details[1].name}</h3>
+                    <p>{userData.scores.details[1].score}kg / semaine</p>
+                </div>
+                <div className={styles.category}>
+                    <h3>{userData.scores.details[2].name}</h3>
+                    <p>{userData.scores.details[2].score}kg / semaine</p>
+                </div>
             </div>
         </div>
       </main>

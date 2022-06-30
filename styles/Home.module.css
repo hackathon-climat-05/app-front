@@ -1,5 +1,8 @@
 .container {
 }
+.detailedScore h2 {
+  margin: 20px 0px 0px 0px;
+}
 
 .main {
   min-height: 100vh;
@@ -38,6 +41,16 @@
 .userScoreDetail p {
   margin: 0px;
   font-size: 10px;
+}
+.category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+.category p, .category h3 {
+  margin: 5px 0px;
 }
 .footer {
   display: flex;
