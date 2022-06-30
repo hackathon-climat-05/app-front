@@ -63,11 +63,11 @@ const Home: NextPage = () => {
                 <div>
                     <div className={styles.category}>
                         <h3>{userData.details.drive.name}</h3>
-                        <p>{userData.details.drive.value.toFixed(3)}kg / semaine</p>
+                        <p>{userData.details.drive.value.toFixed(3)}kg / jour</p>
                     </div>
                     <div className={styles.category}>
                         <h3>{userData.details.meet.name}</h3>
-                        <p>{userData.details.meet.value.toFixed(3)}kg / semaine</p>
+                        <p>{userData.details.meet.value.toFixed(3)}kg / jour</p>
                     </div>
                 </div>
             </div>

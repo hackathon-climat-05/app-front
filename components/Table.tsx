@@ -60,7 +60,9 @@ export function Table({history} : {history: any}) {
     datasets: [
       {
         label: 'Dataset 1',
-        data: labels.map(() => faker.datatype.float({ min: 0, max: 4 })),
+        data: labels.map((els) => {
+          return history[els]
+        }),
         backgroundColor: '##282C26',
         borderRadius: 2,
       },
